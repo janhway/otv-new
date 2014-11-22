@@ -45,7 +45,7 @@ public class ProgramDaoImp implements ProgramDao {
 		Session session = sessionFactory.getCurrentSession();
 
 		Criteria criteria = session.createCriteria(Program.class);
-		criteria.add(Restrictions.eq("title", "title"));
+		criteria.add(Restrictions.eq("title", title));
 		List<Program> result = (List<Program>) criteria.list();
 		return (result == null || result.size() == 0) ? null : result.get(0);
 	}
