@@ -16,8 +16,8 @@ import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.FilePipeline;
 
-import com.lucine.spider.entity.MediaType;
 import com.lucine.spider.iqiyi.AnimationOrTVProcessor;
+import com.lucine.spider.msg.MediaType;
 
 public class Utils {
 

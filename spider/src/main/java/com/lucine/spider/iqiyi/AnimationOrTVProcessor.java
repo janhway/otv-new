@@ -26,9 +26,9 @@ import us.codecraft.webmagic.processor.PageProcessor;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lucine.spider.entity.SubStoryInfo;
-import com.lucine.spider.entity.MediaType;
-import com.lucine.spider.entity.OttMedia;
+import com.lucine.spider.msg.MediaType;
+import com.lucine.spider.msg.OttMedia;
+import com.lucine.spider.msg.SubStoryInfo;
 
 public class AnimationOrTVProcessor implements PageProcessor,Task {
 	

@@ -1,4 +1,4 @@
-package com.lucine.spider.entity;
+package com.lucine.spider.msg;
 
 import java.util.List;
 

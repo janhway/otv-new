@@ -22,9 +22,9 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.lucine.spider.entity.SubStoryInfo;
-import com.lucine.spider.entity.MediaType;
-import com.lucine.spider.entity.OttMedia;
+import com.lucine.spider.msg.MediaType;
+import com.lucine.spider.msg.OttMedia;
+import com.lucine.spider.msg.SubStoryInfo;
 
 public class IqiyiMovieProcessor implements PageProcessor, Task {
 

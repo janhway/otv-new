@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
 
-import com.lucine.spider.entity.OttMedia;
+import com.lucine.spider.msg.OttMedia;
 
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
@@ -16,7 +16,7 @@ public class HttpPipeline implements Pipeline {
 	
 	private final Logger log = LoggerFactory.getLogger(HttpPipeline.class);
 	
-	final String url = "http://127.0.0.1:8080/spider/ottmedia";
+	final String url = "http://127.0.0.1:8080/spiderRestApi/ottmedia";
 	
 	final  RestTemplate restTemplate = new RestTemplate();
 

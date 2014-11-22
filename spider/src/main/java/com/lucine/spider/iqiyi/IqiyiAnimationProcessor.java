@@ -1,6 +1,6 @@
 package com.lucine.spider.iqiyi;
 
-import com.lucine.spider.entity.MediaType;
+import com.lucine.spider.msg.MediaType;
 
 import us.codecraft.webmagic.downloader.Downloader;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
