@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import MediaData.dao.UserDao;
 import MediaData.entity.ReturnMsg;
 import MediaData.entity.User;
+import MediaData.msg.CreateUser;
 
 @Controller
 @RequestMapping("/user")
@@ -56,16 +57,20 @@ public class UserManager {
 
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json")  
+	@RequestMapping(value = "/", method = RequestMethod.POST, headers = "Content-Type=application/json;charset=UTF-8" /*consumes = "application/json"*/)  
 	public @ResponseBody
-	ReturnMsg createUser(@RequestBody User user) {
+	User createUser(@RequestBody CreateUser crtUser) {
+		
+		User user = new User();
+		user.setId(0);
+		user.setFirstName(crtUser.getFirstName());
+		user.setLastName(crtUser.getLastName());
+		user.setUserName(crtUser.getUserName());
+		user.setPassword(crtUser.getPassWord());
 		
 		userDao.addUser(user);
-		
-		String userInfo = "FirstName:" + user.getFirstName() + " LastName:"
-				+ user.getLastName() + " UserName:" + user.getUserName()
-				+ " Password:" + user.getPassword();
-		return new ReturnMsg("0", userInfo);
+
+		return user;
 	}	
 	
 	@RequestMapping(value = "/{userName}", method = RequestMethod.GET)  
@@ -73,6 +78,15 @@ public class UserManager {
 	List<User> getUsers(@PathVariable String userName) {
 		
 		List<User> userList = userDao.getUsers(userName);		
+		
+		return userList;
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)  
+	public @ResponseBody
+	List<User> getUsers() {
+		
+		List<User> userList = userDao.getUsers();		
 		
 		return userList;
 	}	

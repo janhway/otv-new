@@ -33,22 +33,10 @@ public class UserDaoImp implements UserDao {
 	@Override
 	public void addUser(User user) {
 		try {
-			User tmpUser = new User();
-			tmpUser.setFirstName(user.getFirstName());
-			tmpUser.setLastName(user.getLastName());
-			tmpUser.setUserName(user.getUserName());
-			tmpUser.setPassword(user.getPassword());
-			
 			Session session = sessionFactory.getCurrentSession();
-			session.save(user);		
-			
-			//tmpUser.setUserName(user.getUserName());			
-			//session.save(tmpUser);
-			
-				
-			
+			session.save(user);					
 		} catch (Exception e) {
-			log.error("aaaaaaaa");
+			log.error("e.getStackTrace():"+e.getStackTrace());
 		}
 	}
 
@@ -67,6 +55,17 @@ public class UserDaoImp implements UserDao {
 		List<User> userList = (List<User>) session
 				.createQuery("select p from User p where p.userName like :pUserName")
 				.setParameter("pUserName", "%"+userName+"%").list();
+
+		return userList;
+	}
+	
+	@Override
+	public List<User> getUsers() {
+
+		Session session = sessionFactory.getCurrentSession();
+
+		List<User> userList = (List<User>) session
+				.createQuery("select p from User p").list();
 
 		return userList;
 	}
