@@ -1,5 +1,6 @@
 package MediaData.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,7 +15,9 @@ import javax.persistence.Table;
 
 @Entity  
 @Table(name="PROGRAM")  
-public class Program {
+public class Program implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	private long id;
 	
@@ -163,5 +166,26 @@ public class Program {
 	public void setEpisodeList(List<Episode> episodeList) {
 		this.episodeList = episodeList;
 	}	
+	
+	//add mediatype. fix it later.
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Program)) {
+			return false;
+		}
 
+		if (obj == this) {
+			return true;
+		}
+
+		Program other = (Program) obj;
+
+		return (this.id == other.id) && (this.title == other.title);
+	}
+
+	//add mediatype. fix it later.
+	@Override
+	public int hashCode() {
+		return Long.toString(id).hashCode() * 37 + title.hashCode();
+	}
 }

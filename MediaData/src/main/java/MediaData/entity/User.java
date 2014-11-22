@@ -1,5 +1,7 @@
 package MediaData.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,10 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Entity
+@Table(name = "USERS")
+public class User implements Serializable {
 
-@Entity  
-@Table(name="USERS")  
-public class User {
+	private static final long serialVersionUID = 1L;
 
 	private int id;
 	private String firstName;
@@ -18,9 +21,9 @@ public class User {
 	private String userName;
 	private String password;
 
-    @Id  
-    @Column(name = "USER_ID")
-    @GeneratedValue(strategy=GenerationType.AUTO)  
+	@Id
+	@Column(name = "USER_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
@@ -30,7 +33,7 @@ public class User {
 	}
 
 	@Column(name = "FIRST_NAME")
-    public String getFirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
@@ -38,7 +41,7 @@ public class User {
 		this.firstName = firstName;
 	}
 
-	@Column(name = "LAST_NAME")    
+	@Column(name = "LAST_NAME")
 	public String getLastName() {
 		return lastName;
 	}
@@ -47,8 +50,8 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	@Column(name = "USER_NAME", unique = true)	
-    public String getUserName() {
+	@Column(name = "USER_NAME", unique = true)
+	public String getUserName() {
 		return userName;
 	}
 
@@ -56,13 +59,33 @@ public class User {
 		this.userName = userName;
 	}
 
-	@Column(name = "PASSWORD")    
+	@Column(name = "PASSWORD")
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof User)) {
+			return false;
+		}
+
+		if (obj == this) {
+			return true;
+		}
+
+		User other = (User) obj;
+
+		return (this.id == other.id) && (this.userName == other.userName);
+	}
+
+	@Override
+	public int hashCode() {
+		return id * 37 + userName.hashCode();
 	}
 
 }

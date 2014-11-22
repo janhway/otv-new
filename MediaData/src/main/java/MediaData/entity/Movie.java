@@ -1,5 +1,7 @@
 package MediaData.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +14,10 @@ import javax.persistence.Table;
 
 @Entity  
 @Table(name="MOVIE")
-public class Movie {
+public class Movie implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	private long id;
 	
 	private String playUrl;
@@ -48,5 +52,25 @@ public class Movie {
 
 	public void setEpisode(Episode episode) {
 		this.episode = episode;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Movie)) {
+			return false;
+		}
+
+		if (obj == this) {
+			return true;
+		}
+
+		Movie other = (Movie) obj;
+
+		return (this.id == other.id) && (this.playUrl == other.playUrl);
+	}
+
+	@Override
+	public int hashCode() {
+		return Long.toString(id).hashCode() * 37 + playUrl.hashCode();
 	}
 }

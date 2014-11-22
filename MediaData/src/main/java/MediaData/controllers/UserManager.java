@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import MediaData.dao.UserDao;
-import MediaData.entity.ReturnMsg;
 import MediaData.entity.User;
 import MediaData.msg.CreateUser;
 
