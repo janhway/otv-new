@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class Application {
 
     public static void main(String[] args) {
+    	
+    	// 修改为创建和调用爬虫任务. do it later.
         SpringApplication.run(Application.class, args);
     }
 }
